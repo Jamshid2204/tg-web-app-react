@@ -5,4 +5,11 @@
     border: none;
     outline: none;
     cursor: pointer;
+    border-radius: 10px;
+}
+.button:active{
+    transform: scale(0.98);
+}
+.button:hover{
+    background-color: rgb(24, 19, 58);
 }
