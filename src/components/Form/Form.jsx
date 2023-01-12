@@ -28,13 +28,13 @@ const Form = () => {
         })
     }, [])
 
-    // useEffect(() => {
-    //     if(!street || !country) {
-    //         tg.MainButton.hide();
-    //     } else {
-    //         tg.MainButton.show();
-    //     }
-    // }, [country, street])
+    useEffect(() => {
+        if(!subject || !course) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+        }
+    }, [course, subject])
 
     // const onChangeCountry = (e) => {
     //     setCountry(e.target.value)
