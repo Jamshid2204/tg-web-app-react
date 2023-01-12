@@ -8,8 +8,9 @@
     border-radius: 10px;
 }
 .button:active{
+    background-color: rgb(82, 136, 193);
     transform: scale(0.98);
 }
-.button:hover{
-    background-color: rgb(24, 19, 58);
+.button:after{
+    background-color: rgb(75, 115, 193);
 }
