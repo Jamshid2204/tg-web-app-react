@@ -60,10 +60,14 @@ const Form = () => {
                 <option value={'legal'}>komputer injiniring</option>
             </select>
             <select value={course} onChange={onChangeCourse} className={'select'}>
-                <option value={'1-kurs'}>1 kurs</option>
-                <option value={'2-kurs'}>2 kurs</option>
-                <option value={'3-kurs'}>3 kurs</option>
-                <option value={'4-kurs'}>4 kurs</option>
+                <option value={'1-semestr'}>1 semestr</option>
+                <option value={'2-semestr'}>2 semestr</option>
+                <option value={'3-semestr'}>3 semestr</option>
+                <option value={'4-semestr'}>4 semestr</option>
+                <option value={'5-semestr'}>5 semestr</option>
+                <option value={'6-semestr'}>6 semestr</option>
+                <option value={'7-semestr'}>7 semestr</option>
+                <option value={'8-semestr'}>8 semestr</option>
             </select>
         </div>
     );

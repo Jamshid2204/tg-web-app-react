@@ -5,14 +5,12 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
-    {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая'},
-    {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая'},
-    {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые'},
-    {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
+    {id: '1', title: 'Komputer tarmoqlari', price: 672000, description: '6 kridit'},
+    {id: '2', title: 'Dasturiy taminot tizimlarini loyihalash', price: 672000, description: '6 kridit'},
+    {id: '3', title: `Inson komputer o'zaro ta'sri`, price: 672000, description: '6 kridit'},
+    {id: '4', title: 'Dasturlash uslublari va paradigmalar', price: 672000, description: '6 kridit'},
+    {id: '5', title: 'Pedagogika. Psixologiya', price: 448000, description: '4 kridit'},
+    {id: '6', title: 'Individua loyiha', price: 224000, description: '2 kridit'},
 ]
 
 const getTotalPrice = (items = []) => {
@@ -64,7 +62,7 @@ const ProductList = () => {
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Купить ${getTotalPrice(newItems)}`
+                text: `Hammasi ${getTotalPrice(newItems)}`
             })
         }
     }
