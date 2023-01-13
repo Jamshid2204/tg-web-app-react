@@ -56,8 +56,8 @@ const Form = () => {
             <h3>Ma'lumotlarni to'ldiring</h3>
             
             <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option value={'physical'}>Dasturiy injiniring</option>
-                <option value={'legal'}>komputer injiniring</option>
+                <option value={'Dasturiy injiniring'}>Dasturiy injiniring</option>
+                <option value={'Komputer injiniring'}>Komputer injiniring</option>
             </select>
             <select value={course} onChange={onChangeCourse} className={'select'}>
                 <option value={'1-semestr'}>1 semestr</option>

@@ -14,3 +14,6 @@
 .button:after{
     background-color: rgb(75, 115, 193);
 }
+.button:checked{
+    background-color: rgb(57, 95, 171);
+}
