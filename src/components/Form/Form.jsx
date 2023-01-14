@@ -3,8 +3,8 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const [subject, setSubject] = useState('');
-    const [course, setCourse] = useState('');
+    const [subject, setSubject] = useState('a');
+    const [course, setCourse] = useState('b');
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
@@ -56,7 +56,7 @@ const Form = () => {
             <h3>Ma'lumotlarni to'ldiring</h3>
             
             <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option value={'Dasturiy injiniring'}>Dasturiy injiniring</option>
+                <option  value={'Dasturiy injiniring'}>Dasturiy injiniring</option>
                 <option value={'Komputer injiniring'}>Komputer injiniring</option>
             </select>
             <select value={course} onChange={onChangeCourse} className={'select'}>
