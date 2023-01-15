@@ -3,8 +3,8 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const [subject, setSubject] = useState('');
-    const [course, setCourse] = useState('');
+    const [subject, setSubject] = useState('Dasturiy injiniring');
+    const [course, setCourse] = useState('1-semestr');
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
