@@ -11,7 +11,6 @@ const Form = () => {
         const data = {
             subject,
             course,
-            
         }
         tg.sendData(JSON.stringify(data));
     }, [subject, course])
@@ -45,10 +44,18 @@ const Form = () => {
     //     setStreet(e.target.value)
     // }
 
-    const onChangeSubject = (e) => {
+    // const onChangeSubject = (e) => {
+    //     setSubject(e.target.value)
+    // }
+    // const onChangeCourse = (e) => {
+    //     setCourse(e.target.value)
+    // }
+
+    function changeSubject() {
         setSubject(e.target.value)
+        console.log(setSubject);
     }
-    const onChangeCourse = (e) => {
+    function changeCourse() {
         setCourse(e.target.value)
     }
 
@@ -56,19 +63,19 @@ const Form = () => {
         <div className={"form"}>
             <h3>Ma'lumotlarni to'ldiring</h3>
             
-            <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option  value={'Dasturiy injiniring'}>Dasturiy injiniring</option>
-                <option value={'Komputer injiniring'}>Komputer injiniring</option>
+            <select value={subject} onChange={changeSubject} className={'select'}>
+                <option>Dasturiy injiniring</option>
+                <option>Komputer injiniring</option>
             </select>
-            <select value={course} onChange={onChangeCourse} className={'select'}>
-                <option value={'1-semestr'}>1 semestr</option>
-                <option value={'2-semestr'}>2 semestr</option>
-                <option value={'3-semestr'}>3 semestr</option>
-                <option value={'4-semestr'}>4 semestr</option>
-                <option value={'5-semestr'}>5 semestr</option>
-                <option value={'6-semestr'}>6 semestr</option>
-                <option value={'7-semestr'}>7 semestr</option>
-                <option value={'8-semestr'}>8 semestr</option>
+            <select value={course} onChange={changeCourse} className={'select'}>
+                <option>1 semestr</option>
+                <option>2 semestr</option>
+                <option>3 semestr</option>
+                <option>4 semestr</option>
+                <option>5 semestr</option>
+                <option>6 semestr</option>
+                <option>7 semestr</option>
+                <option>8 semestr</option>
             </select>
         </div>
     );
