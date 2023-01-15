@@ -3,6 +3,7 @@ import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
+import Form from '../Form/Form';
 
 const products = [
     {id: '1', title: 'Komputer tarmoqlari', price: 672000, description: '6 kridit'},
@@ -69,6 +70,7 @@ const ProductList = () => {
 
     return (
         <div className={'list'}>
+            <Form/>
             {products.map(item => (
                 <ProductItem
                     product={item}
