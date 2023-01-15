@@ -3,17 +3,19 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const [subject, setSubject] = useState('');
-    const [course, setCourse] = useState('');
+    const [country, setCountry] = useState('');
+    const [street, setStreet] = useState('');
+    const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
-            subject,
-            course,
+            country,
+            street,
+            subject
         }
         tg.sendData(JSON.stringify(data));
-    }, [subject, course])
+    }, [country, street, subject])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -24,58 +26,50 @@ const Form = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: `Ma'lumotlarni qabul qilish`
+            text: 'Отправить данные'
         })
     }, [])
 
-    // useEffect(() => {
-    //     if(!subject || !course) {
-    //         tg.MainButton.hide();
-    //     } else {
-    //         tg.MainButton.show();
-    //     }
-    // }, [course, subject])
+    useEffect(() => {
+        if(!street || !country) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+        }
+    }, [country, street])
 
-    // const onChangeCountry = (e) => {
-    //     setCountry(e.target.value)
-    // }
+    const onChangeCountry = (e) => {
+        setCountry(e.target.value)
+    }
 
-    // const onChangeStreet = (e) => {
-    //     setStreet(e.target.value)
-    // }
+    const onChangeStreet = (e) => {
+        setStreet(e.target.value)
+    }
 
-    // const onChangeSubject = (e) => {
-    //     setSubject(e.target.value)
-    // }
-    // const onChangeCourse = (e) => {
-    //     setCourse(e.target.value)
-    // }
-
-    // function changeSubject() {
-    //     setSubject(e.target.value)
-    //     console.log(setSubject);
-    // }
-    // function changeCourse() {
-    //     setCourse(e.target.value)
-    // }
+    const onChangeSubject = (e) => {
+        setSubject(e.target.value)
+    }
 
     return (
         <div className={"form"}>
-            <h3>Ma'lumotlarni to'ldiring</h3>
-            
-            <select value={subject} onChange={event => setSubject(event.target.value)} className={'select'}>
-                <option value={'Dasturiy injiniring'} >Dasturiy injiniring</option>
-                <option value={'Komputer injiniring'} >Komputer injiniring</option>
-            </select>
-            <select value={course} onChange={event => setCourse(event.target.value)} className={'select'}>
-                <option value={'1-semestr'} >1 semestr</option>
-                <option value={'2-semestr'} >2 semestr</option>
-                <option value={'3-semestr'} >3 semestr</option>
-                <option value={'4-semestr'} >4 semestr</option>
-                <option value={'5-semestr'} >5 semestr</option>
-                <option value={'6-semestr'} >6 semestr</option>
-                <option value={'7-semestr'} >7 semestr</option>
-                <option value={'8-semestr'} >8 semestr</option>
+            <h3>Введите ваши данные</h3>
+            <input
+                className={'input'}
+                type="text"
+                placeholder={'Страна'}
+                value={country}
+                onChange={onChangeCountry}
+            />
+            <input
+                className={'input'}
+                type="text"
+                placeholder={'Улица'}
+                value={street}
+                onChange={onChangeStreet}
+            />
+            <select value={subject} onChange={onChangeSubject} className={'select'}>
+                <option value={'physical'}>Физ. лицо</option>
+                <option value={'legal'}>Юр. лицо</option>
             </select>
         </div>
     );
