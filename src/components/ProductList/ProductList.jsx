@@ -40,13 +40,7 @@ const ProductList = ({subject, course}) => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-        fetch('http://85.119.146.179:8000/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
+        tg.SendData(JSON.stringify(data))
     }, [addedItems])
 
     useEffect(() => {
