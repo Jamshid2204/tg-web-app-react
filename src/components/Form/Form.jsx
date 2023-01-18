@@ -1,11 +1,13 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
+import ProductList from '../ProductList/ProductList';
 
 const Form = () => {
     const [subject, setSubject] = useState('Dasturiy injiniring');
     const [course, setCourse] = useState('1-semestr');
     const {tg} = useTelegram();
+
 
     const onSendData = useCallback(() => {
         const data = {
@@ -44,12 +46,7 @@ const Form = () => {
     //     setStreet(e.target.value)
     // }
 
-    // const onChangeSubject = (e) => {
-    //     setSubject(e.target.value)
-    // }
-    // const onChangeCourse = (e) => {
-    //     setCourse(e.target.value)
-    // }
+    
 
     // function changeSubject() {
     //     setSubject(e.target.value)
@@ -59,15 +56,23 @@ const Form = () => {
     //     setCourse(e.target.value)
     // }
 
+    const onChangeSubject = (e) => {
+        setSubject(e.target.value)
+    }
+    const onChangeCourse = (e) => {
+        setCourse(e.target.value)
+    }
+
     return (
-        <div className={"form"}>
+        
+            <div className={"form"}>
             <h3>Ma'lumotlarni to'ldiring</h3>
             
-            <select value={subject} onChange={event => setSubject(event.target.value)} className={'select'}>
+            <select value={subject} onChange={onChangeSubject} className={'select'}>
                 <option value={'Dasturiy injiniring'} >Dasturiy injiniring</option>
                 <option value={'Komputer injiniring'} >Komputer injiniring</option>
             </select>
-            <select value={course} onChange={event => setCourse(event.target.value)} className={'select'}>
+            <select value={course} onChange={onChangeCourse} className={'select'}>
                 <option value={'1-semestr'} >1 semestr</option>
                 <option value={'2-semestr'} >2 semestr</option>
                 <option value={'3-semestr'} >3 semestr</option>
@@ -77,7 +82,14 @@ const Form = () => {
                 <option value={'7-semestr'} >7 semestr</option>
                 <option value={'8-semestr'} >8 semestr</option>
             </select>
+            <h1>{subject}</h1>
+            <h1>{course}</h1>
+            <ProductList
+            subject={subject}
+            course={course}
+            />
         </div>
+        
     );
 };
 
