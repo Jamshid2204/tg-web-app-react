@@ -5,19 +5,19 @@ import { useState } from 'react';
 
 const ProductItem = ({ product, className, onAdd }) => {
     // const [color, setColor] = useState("blue");
-    const [text, setText] = useState("Qoshish");
+    // const [text, setText] = useState("Qoshish");
 
     const onAddHandler = () => {
-        if (text === "Qoshish") {
-            setText("Qoshildi");
-            onAdd(product);
-            // setColor("red");
-        } else {
-            setText("Qoshish");
-            onAdd(product);
-            // setColor("red");
-        }
-        
+        // if (text === "Qoshish") {
+        //     setText("Qoshildi");
+        //     onAdd(product);
+        //     // setColor("red");
+        // } else {
+        //     setText("Qoshish");
+        //     onAdd(product);
+        //     setColor("red");
+        // }
+        onAdd(product);
     }
 
     return (
@@ -28,7 +28,8 @@ const ProductItem = ({ product, className, onAdd }) => {
                 <span>Summasi: <b>{product.price}</b></span>
             </div>
             <Button className={'add-btn'} onClick={onAddHandler}>
-                {text}
+                {/* {text} */}
+                Qoshish
             </Button>
         </div>
     );
