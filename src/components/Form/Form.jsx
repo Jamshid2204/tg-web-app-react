@@ -73,7 +73,7 @@ const Form = () => {
                 <option value={'Komputer injiniring'} >Komputer injiniring</option>
             </select>
             <select value={course} onChange={onChangeCourse} className={'select'}>
-                <option value={'1-semestr'} >1 semestr</option>
+                <option disabled value={'1-semestr'} >1 semestr</option>
                 <option value={'2-semestr'} >2 semestr</option>
                 <option value={'3-semestr'} >3 semestr</option>
                 <option value={'4-semestr'} >4 semestr</option>
