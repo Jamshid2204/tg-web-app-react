@@ -1,17 +1,5 @@
-import React, { useState } from 'react';
-import './ProductList.css';
-import ProductItem from "../ProductItem/ProductItem";
-import { useTelegram } from "../../hooks/useTelegram";
-import { useCallback, useEffect } from "react";
-import Data from '../../data/data';
-
-const getTotalPrice = (items = []) => {
-    return items.reduce((acc, item) => {
-        return acc += item.price
-    }, 0)
-}
-
-const ProductList = () => {
+import React from 'react'
+const Data = () => {
     const data = [
         {id: '1', subject:"Dasturiy injiniring", course:"3-semestr", title: 'Kiberxavfsizlik asoslari', price: 672000, description: '6 kridit'},
         {id: '2', subject:"Dasturiy injiniring", course:"3-semestr", title: 'Malumotlar tuzilmasi va algoritmlar', price: 672000, description: '6 kridit'},
@@ -51,96 +39,10 @@ const ProductList = () => {
         {id: '31', subject:"Komputer injiniring", course:"5-semestr", title: 'Pedagogika. Psixologiya', price: 448000, description: '4 kridit'},
         {id: '32', subject:"Komputer injiniring", course:"5-semestr", title: 'Individua loyiha', price: 224000, description: '2 kridit'},
     ]
-    const [addedItems, setAddedItems] = useState([]);
-    const { tg, queryId } = useTelegram();
-    const [subjectFilter, setSubjectFilter] = useState('');
-    const [courseFilter, setCourseFilter] = useState('');
-
-    const filteredData = data.filter(item => {
-        if (item.subject !== subjectFilter) {
-            return false;
-        }
-        if (item.course !== courseFilter) {
-            return false;
-        }
-        return true;
-    });
-
-    const onSendData = useCallback(() => {
-        const data = {
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
-            queryId,
-        }
-        fetch('http://localhost:8000', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [addedItems])
-
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
-
-    const onAdd = (product) => {
-        const alreadyAdded = addedItems.find(item => item.id === product.id);
-        let newItems = [];
-        if (alreadyAdded) {
-            newItems = addedItems.filter(item => item.id !== product.id);
-        } 
-        else {
-            newItems = [...addedItems, product];
-        }
-        setAddedItems(newItems)
-        if (newItems.length === 0) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                text: `Hammasi ${getTotalPrice(newItems)
-            }`
-            })
-        }
-    }
-
-    return (
-        <div className={'post'}>
-            <div className='form'>
-            <select className='select' value={subjectFilter} onChange={e => setSubjectFilter(e.target.value)}>
-                <option value="">Yonalish</option>
-                <option value="Dasturiy injiniring">Dasturiy injiniring</option>
-                <option value="Komputer injiniring">Komputer injiniring</option>
-            </select>
-            <select className='select' value={courseFilter} onChange={e => setCourseFilter(e.target.value)}>
-                <option value="">Semestr</option>
-                <option value="1-semestr">1 semestr</option>
-                <option value="2-semestr">2 semestr</option>
-                <option value="3-semestr">3 semestr</option>
-                <option value="4-semestr">4 semestr</option>
-                <option value="5-semestr">5 semestr</option>
-                <option value="6-semestr">6 semestr</option>
-                <option value="7-semestr">7 semestr</option>
-                <option value="8-semestr">8 semestr</option>
-            </select>
-            </div>
-            <div className='list'>
-            {filteredData.map(item => (
-                <ProductItem
-                    key={item.id}
-                    product={item}
-                    onAdd={onAdd}
-                    className={'item'}
-                />
-            ))}
-            </div>
+    return(
+        <div>
+            {data}
         </div>
-    );
-};
-
-export default ProductList;
+    )
+}
+export default Data
