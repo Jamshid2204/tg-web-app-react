@@ -4,18 +4,18 @@ import './ProductItem.css';
 import { useState } from 'react';
 
 const ProductItem = ({ product, className, onAdd }) => {
-    const [color, setColor] = useState("rgb(82, 136, 193)");
+    const [color, setColor] = useState("blue");
     const [text, setText] = useState("Qoshish");
 
     const onAddHandler = () => {
         if (text === "Qoshish") {
             setText("Qoshildi");
             onAdd(product);
-            setColor("rgb(63, 103, 145)");
+            setColor("red");
         } else {
             setText("Qoshish");
             onAdd(product);
-            setColor("rgb(63, 103, 145)");
+            setColor("red");
         }
         
     }

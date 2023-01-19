@@ -11,7 +11,7 @@
     background-color: rgb(82, 136, 193);
     transform: scale(0.98);
 }
-.button:after{
+.button:hover{
     background-color: rgb(75, 115, 193);
 }
 .button:checked{
