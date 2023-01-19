@@ -126,13 +126,13 @@ const ProductList = () => {
     return (
         <div className={'post'}>
             <div className='form'>
-            <select value={subjectFilter} onChange={e => setSubjectFilter(e.target.value)}>
+            <select className='select' value={subjectFilter} onChange={e => setSubjectFilter(e.target.value)}>
                 <option value="">Yonalish</option>
                 <option value="Dasturiy injiniring">Dasturiy injiniring</option>
                 <option value="Komputer injiniring">Komputer injiniring</option>
             </select>
 
-            <select value={courseFilter} onChange={e => setCourseFilter(e.target.value)}>
+            <select className='select' value={courseFilter} onChange={e => setCourseFilter(e.target.value)}>
                 <option value="">Semestr</option>
                 <option value="1-semestr">1 semestr</option>
                 <option value="2-semestr">2 semestr</option>
